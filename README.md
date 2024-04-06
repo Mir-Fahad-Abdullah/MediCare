@@ -1,5 +1,5 @@
 # CSE327 Group 3
-# Project Name: MediCare
+# Project Name: MediCareMate
 # Group Members :
 
 | Name | ID | NSU Email |
