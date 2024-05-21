@@ -12,16 +12,38 @@
         <div id="login">
             <h2>Login</h2>
             <form id="loginForm">
-                <input type="email" id="loginEmail" placeholder="Email" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <select id="role">
-                    <option value="Patient">Patient</option>
-                    <option value="Doctor">Doctor</option>
-                </select>
-                <button type="submit">Login</button>
-                <a href="createAccount.html">create Account</a>
-            </form>
-        </div>
-    </div>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <select id="role">
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+            </select>
+            <button type="submit">Login</button>
+            <a href="createAccount.html">create Account</a>
+        </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, role })
+            });
+
+            const result = await response.json();
+            if (response.status === 200) {
+                localStorage.setItem('token', result.token);
+                window.location.href = role === 'Patient' ? 'patientDashboard.html' : 'doctorDashboard.html';
+            } else {
+                alert(result.message);
+            }
+        });
+    </script>
 </body>
 </html>

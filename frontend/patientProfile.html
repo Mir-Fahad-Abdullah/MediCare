@@ -1,50 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Patient Profile</title>
-	<style>
-	body{
-		background-image: url("css/Images/PatientProfile.jpg");
-		background-attachment: fixed;
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-	table{
-		width: 1000px;
-		margin: auto;
-		text-align: center;
-		table-layout: fixed;
-	}
-	table, tr, th, td{
-		padding: 20px;
-		color: rgb(7, 7, 7);
-		border: 1px solid #cbcecf;
-		border-collapse: collapse;
-		font-size: 18px;
-		font-family: Arial;
-		background: linear-gradient(top, #eef3f7 0%, #b2b7b8 100%);
-		background: -webkit-linear-gradient(top, #eef3f7 0%, #b2b7b8 100%);
-	}
-	h1{
-		color: rgb(6, 6, 6);
-		text-transform: uppercase;
-		font-weight: 900;
-		text-align: center
-	}	
-	</style>
-</head>
-
-
+<html lang="en">
+    <head>
+        <title>Patient Profile</title>
+        <style>
+        body{
+            background-image: url("css/Images/PatientProfile.jpg");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        table{
+            width: 1000px;
+            margin: auto;
+            text-align: center;
+            table-layout: fixed;
+        }
+        table, tr, th, td{
+            padding: 20px;
+            color: rgb(7, 7, 7);
+            border: 1px solid #cbcecf;
+            border-collapse: collapse;
+            font-size: 18px;
+            font-family: Arial;
+            background: linear-gradient(top, #eef3f7 0%, #b2b7b8 100%);
+            background: -webkit-linear-gradient(top, #eef3f7 0%, #b2b7b8 100%);
+        }
+        h1{
+            color: rgb(6, 6, 6);
+            text-transform: uppercase;
+            font-weight: 900;
+            text-align: center
+        }	
+        </style>
+    </head>
 <body>
-	<h1>Patient Profile</h1>
-	<table>
-    <tr>
-        <th >Patient ID</th>
-		<th>Name</th>
-        <th >Phone No.</th>
-		<th>Address</th>
-        <th >Medical Records</th>
-	</tr>
-    </table>
+    <div id="profile">
+        <h1>Patient Profile</h1>
+        <div id="profileDetails"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/patient/profile', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const profile = await response.json();
+            const profileDetails = document.getElementById('profileDetails');
+
+            profileDetails.innerHTML = `
+                <p>Name: ${profile.userId.name}</p>
+                <p>Email: ${profile.userId.email}</p>
+                <p>Contact Number: ${profile.userId.contactNumber}</p>
+                <p>Medical Records: ${profile.medicalRecords.join(', ')}</p>
+            `;
+        });
+    </script>
 </body>
 </html>
