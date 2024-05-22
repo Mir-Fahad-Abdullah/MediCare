@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>View Doctors List</title>
-	<style>
-	
-	body{
-		background-image: url("css/Images/profile.jpg");
-		background-attachment: fixed;
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-	table{
-		width: 1150px;
-		margin: auto;
-		text-align: center;
-		table-layout: fixed;
-	}
-	table, tr, th, td{
-		padding: 20px;
-		color: rgb(0, 0, 0);
-		border: 1px solid #90dff5;
-		border-collapse: collapse;
-		font-size: 18px;
-		font-family: Arial;
-		background: linear-gradient(top, #83f6fa 0%, #05adc7 100%);
-		background: -webkit-linear-gradient(top, #83f6fa 0%, #05adc7 100%);
-	}
-	h1{
-		color: rgb(0, 0, 0);
-		text-transform: uppercase;
-		font-weight: 900;
-		text-align: center
-	}
-    button:hover {
-    background-color: #00ff9d;
-    }
-	</style>
+	<head>
+		<title>View Doctors List</title>
+		<style>
+		
+		body{
+			background-image: url("css/Images/profile.jpg");
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		table{
+			width: 1150px;
+			margin: auto;
+			text-align: center;
+			table-layout: fixed;
+		}
+		table, tr, th, td{
+			padding: 20px;
+			color: rgb(0, 0, 0);
+			border: 1px solid #90dff5;
+			border-collapse: collapse;
+			font-size: 18px;
+			font-family: Arial;
+			background: linear-gradient(top, #83f6fa 0%, #05adc7 100%);
+			background: -webkit-linear-gradient(top, #83f6fa 0%, #05adc7 100%);
+		}
+		h1{
+			color: rgb(0, 0, 0);
+			text-transform: uppercase;
+			font-weight: 900;
+			text-align: center
+		}
+		button:hover {
+		background-color: #00ff9d;
+		}
+		</style>
 </head>
 <body>
     <h1>Specialist Doctors List</h1>
@@ -48,17 +49,25 @@
 
             const doctorsList = document.getElementById('doctorsList');
             doctors.forEach(doctor => {
-                doctorsList.innerHTML += `
-                    <div>
-                        <h2>${doctor.userId.name}</h2>
-                        <p>Availability: ${doctor.availability}</p>
-                        <p>Chamber Address: ${doctor.chamberAddress}</p>
-                        <p>Mobile Number: ${doctor.mobileNumber}</p>
-                        <p>Degree: ${doctor.degree}</p>
-                    </div>
+                const doctorDiv = document.createElement('div');
+                doctorDiv.classList.add('doctor');
+
+                doctorDiv.innerHTML = `
+                    <h2>${doctor.userId.name}</h2>
+                    <p>Availability: ${doctor.availability}</p>
+                    <p>Chamber Address: ${doctor.chamberAddress}</p>
+                    <p>Mobile Number: ${doctor.mobileNumber}</p>
+                    <p>Degree: ${doctor.degree}</p>
+                    <button class="bookAppointmentBtn" onclick="bookAppointment('${doctor._id}')">Book Appointment</button>
                 `;
+
+                doctorsList.appendChild(doctorDiv);
             });
         });
+
+        function bookAppointment(doctorId) {
+            window.location.href = `bookAppointment.html?doctorId=${doctorId}`;
+        }
     </script>
 </body>
 </html>
