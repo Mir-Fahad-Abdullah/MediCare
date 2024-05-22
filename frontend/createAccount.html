@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<style>
+    body{
+        background-image: url('image/account_create.jpg');
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    </style>
+<body>
+    <form id="createAccountForm">
+        <h1>Create Account</h1>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="contactNumber" placeholder="Contact Number" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <select id="role">
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+        </select>
+        <button type="submit">Create Account</button>
+    </form>
+
+    <script>
+        document.getElementById('createAccountForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const role = document.getElementById('role').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            const response = await fetch('/api/auth/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, username, email, contactNumber, password, role })
+            });
+
+            const result = await response.text();
+            alert(result);
+        });
+    </script>
+</body>
+</html>
