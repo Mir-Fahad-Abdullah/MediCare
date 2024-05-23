@@ -1,0 +1,5 @@
+name,username,email,contactNumber,password,role
+John Doe,johndoe,johndoe@example.com,1234567890,$2b$10$abcdefghij1234567890ABCDEFGHIJ,Patient
+Jane Smith,janesmith,janesmith@example.com,0987654321,$2b$10$abcdefghij1234567890ABCDEFGHIJ,Doctor
+Alex Johnson,alexjohnson,alexjohnson@example.com,1231231234,$2b$10$abcdefghij1234567890ABCDEFGHIJ,Doctor
+Emily Davis,emilydavis,emilydavis@example.com,4321432143,$2b$10$abcdefghij1234567890ABCDEFGHIJ,Patient
