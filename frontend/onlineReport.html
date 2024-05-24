@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Report Submission</title>
+    <link rel="stylesheet" href="css/onlineReport.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Online Report Submission</h2>
+        <form action="/submit-report" method="post">
+            <div class="report">
+                <input type="text" id="Text" placeholder="Patient ID" required>
+                <input type="text" id="Text" placeholder="Phone NO." required>
+                <input type="text" id="Text" placeholder="Address" required>
+                <input type="text" id="Text" placeholder="Email" required>
+
+            </div>
+            <div class="form-group ">
+
+                <textarea id="Text " placeholder="Report Content " rows="5 " required></textarea>
+                <input type="date" id=" Date " placeholder=" Report Date " required>
+            </div>
+
+            <div class="form-group ">
+                <button type="submit ">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
