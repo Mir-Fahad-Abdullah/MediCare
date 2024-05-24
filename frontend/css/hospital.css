@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 98vw;
+    background: url('images/np.jpg') center / cover ;
+    background-color: #e4e4e4;
+    margin-top: 40px; /* To account for the fixed navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    display: inline-flex;
+    left: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 2px; /* Space between cards */
+    padding: 1px;
+    margin-left: 30px;
+}
+
+.card {
+    width: 300px;
+    background-color: #4fa0d6;
+    border-radius: 8px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+    padding: 1px;
+   
+    align-items: center;
+    margin-bottom: 1px; /* Add margin to avoid overlap with the navbar */
+    margin-left: 18px;
+    top: 50px;
+    left: 20px;
+}
+
+.card-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5),
+    0 5px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-image img {
+    width: 100%;
+    transform: scale(1.2);
+}
+
+p {
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.name {
+    margin-top: 80px;
+    font-size: 16;
+    color: #0e0a0a;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+button {
+    margin: 12px 8px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button i {
+    color: #131212;
+    font-size: 1.4em;
+}
+
+/* Social media colors */
+button.google {
+    background-color: #dde1e6;
+} 
+
+button.map {
+    background-color: #cfe0eb;
+}
+
+button.investigation {
+    background-color: #054e53;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+button.investigation a {
+    font-weight: bold; 
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+}

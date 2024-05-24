@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Doctor</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<style>
+    body{
+    background-image: url('image/review_page_background.jpg');
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+</style>
+<body>
+    <form id="reviewForm">
+        <h1>Review Doctor</h1>
+        <input type="text" id="doctorId" placeholder="Doctor ID" required>
+        <input type="number" id="rating" placeholder="Rating (1-5)" required>
+        <textarea id="comment" placeholder="Comment" required></textarea>
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const token = localStorage.getItem('token');
+            const doctorId = document.getElementById('doctorId').value;
+            const rating = document.getElementById('rating').value;
+            const comment = document.getElementById('comment').value;
+
+            const response = await fetch('/api/review', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ doctorId, rating, comment })
+            });
+
+            const result = await response.text();
+            alert(result);
+        });
+    </script>
+</body>
+</html>

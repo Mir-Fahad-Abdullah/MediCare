@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/hospital.css">
+    <title>MediCareMate</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <img src="css/images/popular.jpg" alt="Profile image">
+            </div>
+            <p class="name">Popular Diagnostic Center Ltd</p>
+            <p>Dhanmondi branch</p>
+            <p>House#16,Road#2,Dhanmondi,Dhaka</p>
+            <div class="socials">
+                <button class="google" onclick="openGoogle('Popular Diagnostic Center Ltd, Dhanmondi, Dhaka')"><i class="fa-brands fa-google"></i></button>
+                <button class="map" onclick="openMap('Popular Diagnostic Center Ltd, Dhanmondi, Dhaka')"><i class="fa-solid fa-location-dot"></i></button>
+                <button class="investigation"><a href="investigationList.html">Investigation List</a></button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="css/images/brb.png" alt="Profile image">
+            </div>
+            <p class="name">BRB Hospitals Limited</p>
+            <p>Pranthopot branch</p>
+            <p>77/A Panthapath, Dhaka 1215</p>
+            <div class="socials">
+                <button class="google" onclick="openGoogle('BRB Hospitals Limited, Panthapath, Dhaka')"><i class="fa-brands fa-google"></i></button>
+                <button class="map" onclick="openMap('BRB Hospitals Limited, Panthapath, Dhaka')"><i class="fa-solid fa-location-dot"></i></button>
+                <button class="investigation"><a href="investigationList.html">Investigation List</a></button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="css/images/berdem.jpg" alt="Profile image">
+            </div>
+            <p class="name">BIRDEM General Hospital</p>
+            <p>Shahabag</p>
+            <p>122 Kazi Nazrul Islam Ave, Dhaka 1000</p>
+            <div class="socials">
+                <button class="google" onclick="openGoogle('BIRDEM General Hospital, Shahabag, Dhaka')"><i class="fa-brands fa-google"></i></button>
+                <button class="map" onclick="openMap('BIRDEM General Hospital, Shahabag, Dhaka')"><i class="fa-solid fa-location-dot"></i></button>
+                <button class="investigation"><a href="investigationList.html">Investigation List</a></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openGoogle(query) {
+            const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            window.open(url, '_blank');
+        }
+
+        function openMap(location) {
+            const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
